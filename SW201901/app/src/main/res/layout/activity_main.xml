@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.example.musicplayer.MainActivity">
 
     <ImageView
         android:layout_width="400dp"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:baselineAligned="false"
         android:src="@drawable/image" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/positionBar"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,5 +40,39 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/pl"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/play"
+        android:onClick="playBtnClick"
+        tools:ignore="OnClick" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/sound"/>
+
+        <SeekBar
+            android:id="@+id/volumeBar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="50"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/sound2"/>
+
+    </LinearLayout>
 
 </LinearLayout>
