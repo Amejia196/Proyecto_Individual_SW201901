@@ -53,5 +53,25 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        volumebar = (SeekBar) findViewById(R.id.volumeBar);
+        volumebar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                float volumeNumber = progress/100f;
+                mediaPlayer.setVolume(volumeNumber, volumeNumber);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 }
