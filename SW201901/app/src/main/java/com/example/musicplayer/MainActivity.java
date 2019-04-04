@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                     {
                         Message message = new Message();
                         message.what = mediaPlayer.getCurrentPosition();
+                        handler.sendMessage(message);
+                        Thread.sleep(1000);
                     }
                     catch (InterruptedException e)
                     {
@@ -123,5 +126,19 @@ public class MainActivity extends AppCompatActivity {
         timeLable += sec;
 
         return timeLable;
+    }
+
+    public void playBtnClick (View view)
+    {
+        if(!mediaPlayer.isPlaying())
+        {
+            mediaPlayer.start();
+            PlayButton.setBackgroundResource(R.drawable.sound);
+        }
+        else
+        {
+            mediaPlayer.pause();
+            PlayButton.setBackgroundResource(R.drawable.play);
+        }
     }
 }
