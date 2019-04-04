@@ -1,6 +1,8 @@
 package com.example.musicplayer;
 
 import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -73,5 +75,53 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (mediaPlayer != null)
+                {
+                    try
+                    {
+                        Message message = new Message();
+                        message.what = mediaPlayer.getCurrentPosition();
+                    }
+                    catch (InterruptedException e)
+                    {
+
+                    }
+                }
+            }
+        });
+    }
+
+    private Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage (Message message)
+        {
+            int currentPosition = message.what;
+            positionBar.setProgress(currentPosition);
+
+            String elapsedTime = createTimeLable(currentPosition);
+            elapsedTimeLabel.setText(elapsedTime);
+
+            String remainingTime = createTimeLable(totalTime-currentPosition);
+            remainingTimeLabel.setText("- "+remainingTime);
+        }
+    };
+
+    private String createTimeLable(int time)
+    {
+        String timeLable = "";
+        int min = time/1000/60;
+        int sec = time/1000%60;
+
+        timeLable = min + ":";
+        if(sec < 10)
+            timeLable += "0";
+        timeLable += sec;
+
+        return timeLable;
     }
 }
