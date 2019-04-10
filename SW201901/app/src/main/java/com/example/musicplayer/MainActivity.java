@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         timeLable = min + ":";
         if(sec < 10)
             timeLable += "0";
-        timeLable += sec;
+            timeLable += sec;
 
         return timeLable;
     }
